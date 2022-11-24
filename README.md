@@ -7,10 +7,6 @@ A sample repository to show case a number of applications using [Riverpod](https
 - Counter App
 
 
-## Getting Started
-
-After cloning the project, check the TODO, and add your [TMDB API KEY](https://www.themoviedb.org/).
-
 ## Development Setup
 
 Clone the repository and run the following commands:
