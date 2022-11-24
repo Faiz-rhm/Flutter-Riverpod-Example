@@ -1,30 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-final helloWordProvider = Provider((ref) => "hello world!");
-final counterProvider = StateProvider((ref) => 0);
-
-class CounterModel {
-  CounterModel(this.count);
-
-  final int count;
-}
-
-class CounterNotifier extends StateNotifier<CounterModel> {
-  CounterNotifier(): super(_initialValue);
-
-  static final _initialValue = CounterModel(0);
-
-  inCrement() {
-    state = CounterModel(state.count + 1);
-  }
-
-  deCrement() {
-    state = CounterModel(state.count - 1);
-  }
-}
-
-final counterStateProvider = StateNotifierProvider<CounterNotifier, CounterModel>((ref) =>  CounterNotifier());
+import 'package:river_pod/model/Counter.dart';
+import 'package:river_pod/provider/counter_provider.dart';
 
 class CounterApp extends ConsumerWidget {
   const CounterApp({super.key});
@@ -36,7 +13,7 @@ class CounterApp extends ConsumerWidget {
     final helloWorld = ref.watch(helloWordProvider);
     final counter = ref.watch(counterProvider);
 
-    CounterModel counterProviders = ref.watch(counterStateProvider);
+    Counter counterProviders = ref.watch(counterStateProvider);
 
     return Scaffold(
       appBar: AppBar(
