@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:river_pod/model/Counter.dart';
+import 'package:river_pod/src/features/counter/model/counter.dart';
 
 // Provider
 final helloWordProvider = Provider((ref) => "hello world!");

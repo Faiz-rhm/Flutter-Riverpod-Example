@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:river_pod/model/Counter.dart';
-import 'package:river_pod/provider/counter_provider.dart';
+import 'package:river_pod/src/features/counter/provider/counter_provider.dart';
+
+import '../model/counter.dart';
 
 class CounterApp extends ConsumerWidget {
   const CounterApp({super.key});
