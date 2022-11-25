@@ -1,14 +1,13 @@
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:river_pod/model/Todo.dart';
+import 'package:river_pod/src/features/todo/model/todo.dart';
 import 'package:uuid/uuid.dart';
 
 const _uuid = Uuid();
 
 class TodoStateNotifier extends StateNotifier<List<Todo>> {
-  TodoStateNotifier() : super([]);
+  TodoStateNotifier([List<Todo>? initialTodos]) : super(initialTodos ?? []);
 
-  add(String description) {
+  void add(String description) {
     state = [
       ...state,
       Todo(
@@ -19,24 +18,25 @@ class TodoStateNotifier extends StateNotifier<List<Todo>> {
 
   }
 
-  edit(String id, String description) {
+  void edit({required String id, required String description}) {
     state = [
-      ...state,
       for(final todo in state)
         if(todo.id == id)
           Todo(
-            description: todo.description,
+            description: description,
             id: todo.id,
+            completed: todo.completed
           )
+        else
+          todo,
     ];
-
   }
 
-  remove() {
-
+  void remove(Todo target) {
+    state = state.where((todo) => todo.id != target.id).toList();
   }
 
-  toggle(String id) {
+  void toggle(String id) {
     state = [
       for(final todo in state)
         if(id == todo.id)
